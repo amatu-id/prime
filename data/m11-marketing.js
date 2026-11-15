@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'marketing', no: 11, t: 'Marketing', s: 'Membuat orang tahu, tertarik, percaya, dan membeli', c: '#f08c00',
+  id: 'marketing', no: 16, t: 'Marketing', s: 'Membuat orang tahu, tertarik, percaya, dan membeli', c: '#f08c00',
   d: 'Marketing adalah ilmu bicara dalam skala besar: menyampaikan pesan yang tepat kepada orang yang tepat, lewat saluran yang tepat. Modul ini membahas positioning, mengenal pelanggan, copywriting, konten media sosial (termasuk bedah konten reel yang menjadi inspirasi Prime), funnel, psikologi harga, personal branding, dan cara mengukur hasil.',
   L: [
     {

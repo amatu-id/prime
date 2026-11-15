@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'politik', no: 7, t: 'Berpolitik', s: 'Politik kantor & sosial tanpa kehilangan integritas', c: '#475569',
+  id: 'politik', no: 17, t: 'Berpolitik', s: 'Politik kantor & sosial tanpa kehilangan integritas', c: '#475569',
   d: 'Di mana ada manusia dan kepentingan, di situ ada politik. Menolak berpolitik bukan membuatmu bersih, hanya membuat orang lain yang menentukan nasibmu. Modul ini mengajarkan memetakan kekuasaan, membangun aliansi, mengelola atasan, mendapat kredit yang layak, menghadapi rival dan gosip, menang di rapat, serta prinsip-prinsip kekuasaan yang perlu kamu pahami.',
   L: [
     {

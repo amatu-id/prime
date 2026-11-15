@@ -30,6 +30,18 @@ for (const m of P.M) {
     }
   }
 }
+// jalur: setiap modul tepat di satu tingkat, nomor modul = urutan jalur, id tingkat tidak bentrok dengan modul/kunci kuis
+const J = P.J || [], inJ = new Map(), RES = new Set(['akhir', 'campur', 'penempatan']);
+if (!J.length) err.push('PRIME.J (data/jalur.js) kosong');
+J.forEach((j, i) => {
+  for (const k of ['id', 'no', 't', 's', 'c', 'd', 'm']) if (j[k] == null) err.push('tingkat ' + j.id + ' tanpa ' + k);
+  if (j.no !== i + 1) err.push('tingkat ' + j.id + ' no harus ' + (i + 1));
+  if (!/^#[0-9a-f]{6}$/i.test(j.c)) err.push('warna tingkat ' + j.id + ' bukan #rrggbb');
+  if (mods.has(j.id) || RES.has(j.id)) err.push('id tingkat bentrok: ' + j.id);
+  for (const id of j.m || []) { if (!mods.has(id)) err.push('tingkat ' + j.id + ': modul tidak dikenal ' + id); if (inJ.has(id)) err.push('modul ' + id + ' di dua tingkat'); inJ.set(id, j.id); }
+});
+let urut = 0; for (const j of J) for (const id of j.m || []) { urut++; const m = P.M.find(x => x.id === id); if (m && m.no !== urut) err.push('modul ' + id + ' no ' + m.no + ', urutan jalur ' + urut); }
+for (const m of P.M) { if (!inJ.has(m.id)) err.push('modul ' + m.id + ' tidak masuk tingkat mana pun'); if (RES.has(m.id)) err.push('id modul bentrok: ' + m.id); }
 const cats = new Set((P.SK || []).map(c => c.id)), sid = new Set();
 for (const s of P.S) {
   if (sid.has(s.id)) err.push('skrip id ganda ' + s.id); sid.add(s.id);
@@ -43,4 +55,4 @@ for (const c of P.C) if (c.length !== 3 || !mods.has(c[2])) err.push('tantangan 
 if (P.C.length !== 30) warn.push('tantangan bukan 30: ' + P.C.length);
 for (const w of warn) console.log('peringatan:', w);
 if (err.length) { for (const e of err) console.error('GALAT:', e); process.exit(1); }
-console.log('data ok: ' + P.M.length + ' modul, ' + nl + ' pelajaran, ' + nq + ' soal, ' + P.S.length + ' skrip, ' + P.T.length + ' trik, ' + P.C.length + ' tantangan, ±' + words + ' kata materi');
+console.log('data ok: ' + J.length + ' tingkat, ' + P.M.length + ' modul, ' + nl + ' pelajaran, ' + nq + ' soal, ' + P.S.length + ' skrip, ' + P.T.length + ' trik, ' + P.C.length + ' tantangan, ±' + words + ' kata materi');

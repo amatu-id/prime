@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'pengaruh', no: 6, t: 'Pengaruh & Manipulasi', s: 'Pahami caranya, tangkis yang gelap, pakai yang etis', c: '#d6336c',
+  id: 'pengaruh', no: 12, t: 'Pengaruh & Manipulasi', s: 'Pahami caranya, tangkis yang gelap, pakai yang etis', c: '#d6336c',
   d: 'Pengaruh ada di mana-mana: iklan, rapat, hubungan, politik. Modul ini membedah cara kerja pengaruh dan manipulasi, dari prinsip psikologi persuasi, framing, dan teknik percakapan, sampai taktik manipulasi gelap seperti gaslighting dan guilt trip. Tujuannya dua: kamu bisa memengaruhi dengan etis, dan kamu kebal saat ada yang mencoba memanipulasimu.',
   L: [
     {

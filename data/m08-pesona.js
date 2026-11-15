@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'pesona', no: 8, t: 'Merayu & Pesona', s: 'Karisma, PDKT, dan membujuk dengan hangat', c: '#e64980',
+  id: 'pesona', no: 13, t: 'Merayu & Pesona', s: 'Karisma, PDKT, dan membujuk dengan hangat', c: '#e64980',
   d: 'Merayu yang elegan bukan soal gombalan, tapi soal membuat orang merasa diperhatikan, nyaman, dan senang berada di dekatmu. Modul ini membahas karisma, membuka obrolan, memuji, humor, membaca sinyal dan menghormati batas, PDKT lewat chat, mengajak kencan, menjaga hubungan, sampai merayu dalam arti membujuk orang tua, atasan, atau klien.',
   L: [
     {

@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'deal', no: 10, t: 'Deal & Closing', s: 'Dari obrolan menjadi kesepakatan yang tertulis', c: '#2f9e44',
+  id: 'deal', no: 15, t: 'Deal & Closing', s: 'Dari obrolan menjadi kesepakatan yang tertulis', c: '#2f9e44',
   d: 'Banyak penjual pandai presentasi tapi gagal menutup. Modul ini membahas psikologi keputusan, menggali kebutuhan, menyajikan nilai, menangani keberatan seperti "mahal" dan "pikir-pikir dulu", teknik closing, follow-up yang tidak mengganggu, mengikat kesepakatan secara tertulis, sampai membuat klien kembali dan merekomendasikanmu.',
   L: [
     {

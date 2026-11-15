@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'bicara', no: 1, t: 'Tata Bicara', s: 'Tenang, jelas, singkat, yakin', c: '#3b6ef5',
+  id: 'bicara', no: 3, t: 'Tata Bicara', s: 'Tenang, jelas, singkat, yakin', c: '#3b6ef5',
   d: 'Orang jarang diremehkan karena kurang pintar. Lebih sering karena caranya bicara: terlalu cepat, berbelit, penuh "eh… anu…", dan nadanya seperti minta izin. Modul ini membangun fondasi: suara, struktur, mendengar, bertanya, bercerita, sampai bicara di depan banyak orang.',
   L: [
     {

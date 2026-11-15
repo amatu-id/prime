@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'emosi', no: 3, t: 'Mengendalikan Emosi', s: 'Dari meledak menjadi memilih respons', c: '#14a38b',
+  id: 'emosi', no: 6, t: 'Mengendalikan Emosi', s: 'Dari meledak menjadi memilih respons', c: '#14a38b',
   d: 'Mengendalikan emosi bukan berarti tidak punya emosi. Artinya kamu yang memegang kemudi: merasakan marah, takut, atau kecewa, tapi tetap memilih apa yang diucapkan dan dilakukan. Modul ini berisi cara kerja emosi, teknik jeda, napas, menamai emosi, mengubah sudut pandang, mengelola marah dan gugup, serta tenang di bawah tekanan.',
   L: [
     {

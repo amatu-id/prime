@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'negosiasi', no: 9, t: 'Negosiasi', s: 'Dapat lebih banyak tanpa merusak hubungan', c: '#0b7285',
+  id: 'negosiasi', no: 14, t: 'Negosiasi', s: 'Dapat lebih banyak tanpa merusak hubungan', c: '#0b7285',
   d: 'Hampir semua hal bisa dinegosiasikan: gaji, harga, tenggat, pembagian tugas, bahkan jam tidur anak. Modul ini mengajarkan pola pikir negosiator, persiapan BATNA dan ZOPA, membuka dengan angka, empati taktis, seni konsesi, menghadapi lawan yang keras, serta negosiasi gaji dan harga sehari-hari. Gunakan Lembar Negosiasi di menu Latihan untuk persiapan nyata.',
   L: [
     {

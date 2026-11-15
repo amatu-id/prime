@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'tegas', no: 2, t: 'Tegas Tanpa Kasar', s: 'Asertif: berpendapat, menolak, menangkis sindiran', c: '#e0583a',
+  id: 'tegas', no: 8, t: 'Tegas Tanpa Kasar', s: 'Asertif: berpendapat, menolak, menangkis sindiran', c: '#e0583a',
   d: 'Tegas tidak harus kasar, dan dihargai tidak harus dengan mengintimidasi. Di modul ini kamu belajar menyampaikan pendapat, menolak permintaan, menghadapi sindiran, merespons orang yang merendahkan, menetapkan batas, serta memberi dan menerima kritik dengan kepala dingin.',
   L: [
     {

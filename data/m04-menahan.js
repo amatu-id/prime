@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'menahan', no: 4, t: 'Menahan Diri', s: 'Kendali lisan, impuls, dan ego', c: '#6c5ce7',
+  id: 'menahan', no: 7, t: 'Menahan Diri', s: 'Kendali lisan, impuls, dan ego', c: '#6c5ce7',
   d: 'Kekuatan terbesar sering terlihat dari apa yang tidak dilakukan: tidak membalas, tidak membocorkan, tidak membuktikan diri, tidak membeli karena impuls. Modul ini melatih kendali atas lisan, jari di layar, keinginan sesaat, dan ego.',
   L: [
     {

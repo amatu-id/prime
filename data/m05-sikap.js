@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'sikap', no: 5, t: 'Cara Bersikap', s: 'Wibawa, bahasa tubuh, dan etiket', c: '#c58a1e',
+  id: 'sikap', no: 9, t: 'Cara Bersikap', s: 'Wibawa, bahasa tubuh, dan etiket', c: '#c58a1e',
   d: 'Orang menilai sikapmu sebelum mendengar isi omonganmu. Modul ini membahas kesan pertama, wibawa tanpa sombong, bahasa tubuh, etiket kerja dan sosial, cara bersikap kepada berbagai pihak, serta membangun reputasi yang bisa dipercaya.',
   L: [
     {
