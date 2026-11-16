@@ -9,18 +9,31 @@ let nl = 0, nq = 0, words = 0;
 for (const m of P.M) {
   for (const k of ['id', 'no', 't', 's', 'c', 'd', 'L']) if (m[k] == null) err.push('modul ' + m.id + ' tanpa ' + k);
   if (!/^#[0-9a-f]{6}$/i.test(m.c)) err.push('warna modul ' + m.id + ' bukan #rrggbb');
+  if (m.baru != null && !/^\d{4}-\d{2}-\d{2}$/.test(m.baru)) err.push('modul ' + m.id + ': baru harus YYYY-MM-DD');
   for (const l of m.L) {
     nl++;
     if (ids.has(l.id)) err.push('id ganda ' + l.id); ids.add(l.id);
     for (const k of ['id', 't', 'd', 'x', 'l', 'q']) if (!l[k]) err.push(l.id + ' tanpa ' + k);
     words += (l.x + ' ' + l.l).split(/\s+/).length;
+    let tcols = 0, trows = 0; // tabel "| a | b |": jumlah kolom sama, minimal 2 baris (judul + isi)
+    const tend = () => { if (trows === 1) err.push(l.id + ': tabel hanya berisi judul'); tcols = trows = 0; };
     for (const line of l.x.split('\n')) {
-      const t = line.trim(); if (!t) continue;
+      const t = line.trim();
+      if (t.startsWith('|')) {
+        const n = t.replace(/^\||\|$/g, '').split('|').length;
+        if (!/\|$/.test(t)) err.push(l.id + ': baris tabel harus diakhiri "|": ' + t.slice(0, 60));
+        if (trows && n !== tcols) err.push(l.id + ': kolom tabel tidak sama (' + n + ' vs ' + tcols + '): ' + t.slice(0, 60));
+        if ((t.match(/\*\*/g) || []).length % 2) err.push(l.id + ': ** tidak berpasangan: ' + t.slice(0, 60));
+        tcols = tcols || n; trows++; continue;
+      }
+      if (trows) tend();
+      if (!t) continue;
       if (/^=/.test(t) && !/^= ([^:]+): (.*)/.test(t)) err.push(l.id + ': baris definisi tidak dikenali: ' + t.slice(0, 60));
       if (/^[xv]:/.test(t) && !/^[xv]: \S/.test(t)) err.push(l.id + ': baris contoh tidak dikenali: ' + t.slice(0, 60));
       if (/^#(?!# )/.test(t)) err.push(l.id + ': judul harus "## ": ' + t.slice(0, 60));
       if ((t.match(/\*\*/g) || []).length % 2) err.push(l.id + ': ** tidak berpasangan: ' + t.slice(0, 60));
     }
+    if (trows) tend();
     for (const q of l.q) {
       nq++;
       if (q.length < 5) err.push(l.id + ': soal kurang opsi: ' + q[0]);
@@ -54,6 +67,9 @@ for (const t of P.T) if (!mods.has(t[0]) || t.length !== 3) err.push('trik salah
 for (const c of P.C) if (c.length !== 3 || !mods.has(c[2])) err.push('tantangan salah: ' + c[0]);
 if (P.C.length % 30) warn.push('tantangan bukan kelipatan 30 (satu seri = 30 misi): ' + P.C.length);
 if (P.CS && P.CS.length !== Math.ceil(P.C.length / 30)) warn.push('PRIME.CS harus ' + Math.ceil(P.C.length / 30) + ' seri, ada ' + P.CS.length);
+// setiap file data harus dimuat oleh halaman (index.src.html memuat file satu per satu)
+const page = fs.readFileSync(path.join(__dirname, '..', 'index.src.html'), 'utf8');
+for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.js'))) if (!page.includes('data/' + f + '?')) err.push('data/' + f + ' tidak dimuat di index.src.html');
 for (const w of warn) console.log('peringatan:', w);
 if (err.length) { for (const e of err) console.error('GALAT:', e); process.exit(1); }
 console.log('data ok: ' + J.length + ' tingkat, ' + P.M.length + ' modul, ' + nl + ' pelajaran, ' + nq + ' soal, ' + P.S.length + ' skrip, ' + P.T.length + ' trik, ' + P.C.length + ' tantangan, ±' + words + ' kata materi');

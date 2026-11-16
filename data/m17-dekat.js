@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'dekat', no: 11, t: 'Orang Terdekat', s: 'Bicara dengan pasangan, keluarga, dan sahabat', c: '#f06595',
+  id: 'dekat', no: 12, t: 'Orang Terdekat', s: 'Bicara dengan pasangan, keluarga, dan sahabat', c: '#f06595',
   d: 'Ironisnya, kita sering paling sabar kepada orang asing dan paling ketus kepada orang yang paling kita sayangi. Modul ini membahas komunikasi di rumah dan lingkaran terdekat: dengan pasangan, orang tua, anak, saudara, dan sahabat, termasuk cara berselisih dengan sehat, membicarakan uang, dan memperbaiki hubungan yang retak.',
   L: [
     {

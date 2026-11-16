@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'pimpin', no: 22, t: 'Memimpin dengan Kata', s: 'Arahan, delegasi, membina, dan menggerakkan tim', c: '#087f5b',
+  id: 'pimpin', no: 27, t: 'Memimpin dengan Kata', s: 'Arahan, delegasi, membina, dan menggerakkan tim', c: '#087f5b',
   d: 'Pemimpin bekerja lewat kata-kata: memberi arah, mendelegasikan, membina lewat pertanyaan, memotivasi, menyampaikan perubahan, dan memimpin rapat hingga keputusan. Modul ini untuk siapa pun yang memimpin orang lain, baik di kantor, organisasi, komunitas, usaha keluarga, maupun rumah tangga.',
   L: [
     {

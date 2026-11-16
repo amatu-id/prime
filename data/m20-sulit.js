@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'sulit', no: 20, t: 'Percakapan Sulit', s: 'Kabar buruk, konfrontasi, dan menengahi konflik', c: '#a61e4d',
+  id: 'sulit', no: 24, t: 'Percakapan Sulit', s: 'Kabar buruk, konfrontasi, dan menengahi konflik', c: '#a61e4d',
   d: 'Ada percakapan yang ingin kita hindari selamanya: menyampaikan kabar buruk, menegur orang yang lebih berkuasa, mengakhiri hubungan atau kerja sama, dan menengahi dua orang yang bertikai. Modul ini memberi peta untuk menjalani percakapan paling berat dengan jujur, manusiawi, dan tetap tenang.',
   L: [
     {

@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'panggung', no: 21, t: 'Panggung & Pidato', s: 'Pidato, presentasi, sambutan, MC, dan media', c: '#7048e8',
+  id: 'panggung', no: 25, t: 'Panggung & Pidato', s: 'Pidato, presentasi, sambutan, MC, dan media', c: '#7048e8',
   d: 'Kamu sudah bisa bicara di depan orang. Sekarang saatnya tampil memukau: merancang pidato yang menggerakkan, membuka dan menutup dengan kuat, membuat slide yang membantu, menguasai panggung, memberi sambutan acara, menjadi MC atau moderator, dan menghadapi wawancara media.',
   L: [
     {

@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'tulisan', no: 10, t: 'Chat, Email & Digital', s: 'Komunikasi tertulis yang jelas dan berkelas', c: '#74b816',
+  id: 'tulisan', no: 11, t: 'Chat, Email & Digital', s: 'Komunikasi tertulis yang jelas dan berkelas', c: '#74b816',
   d: 'Sebagian besar komunikasi kita sekarang lewat layar: chat kerja, email, pesan suara, rapat video, grup WhatsApp, dan kolom komentar. Tanpa nada dan wajah, pesan mudah disalahpahami. Modul ini melatih cara menulis yang jelas, sopan, dan efektif di setiap saluran digital, termasuk pesan-pesan yang paling sulit ditulis.',
   L: [
     {

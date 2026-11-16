@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'puncak', no: 23, t: 'Menjadi Fasih', s: 'Dari teknik menjadi naluri, dari meniru menjadi gaya sendiri', c: '#b8860b',
+  id: 'puncak', no: 29, t: 'Menjadi Fasih', s: 'Dari teknik menjadi naluri, dari meniru menjadi gaya sendiri', c: '#b8860b',
   d: 'Modul penutup. Semua teknik di Prime baru benar-benar terasa saat sudah menjadi kebiasaan yang muncul sendiri. Di sini kamu belajar tahapan menuju fasih, membaca ruangan, menyesuaikan gaya dengan siapa pun, menemukan suaramu sendiri, berlatih dengan terarah, menjaga karisma yang konsisten, dan terus berkembang setelah kursus ini selesai.',
   L: [
     {

@@ -224,6 +224,23 @@ h1, h2, h3 { margin: 0; }
 .prose .call.tip svg { color: var(--gold); }
 .prose .call.warn { background: var(--warnbg); color: var(--ink); }
 .prose .call.warn svg { color: var(--warn); }
+.prose .tbl { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 1.2em; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.prose .tbl table { width: 100%; border-collapse: collapse; font-size: .93em; line-height: 1.5; }
+.prose .tbl th, .prose .tbl td { padding: .62em .85em; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+.prose .tbl th + th, .prose .tbl td + td { border-left: 1px solid var(--line); }
+.prose .tbl th { background: var(--card2); color: var(--ink); font-weight: 650; border-top: 0; }
+.prose .tbl td:first-child { color: var(--ink); font-weight: 600; }
+.prose .tbl .c { text-align: center; }
+.prose .tbl td.c { font-weight: 750; color: var(--ink); white-space: nowrap; }
+@media (max-width: 860px) {
+  .prose .tbl table { font-size: .88em; }
+  .prose .tbl th, .prose .tbl td { padding: .5em .62em; }
+  /* tabel yang lebih lebar dari layar digeser ke samping; kolom pertama (nama tugas/gaya) tetap terlihat */
+  .prose .tbl th:first-child, .prose .tbl td:first-child { position: sticky; left: 0; z-index: 1; background: var(--card); box-shadow: 1px 0 0 var(--line); }
+  .prose .tbl th:first-child { background: var(--card2); }
+}
+.nw { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 99px; background: var(--gold2); color: #1b1608; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; line-height: 1.5; vertical-align: 1px; flex: none; }
+.nwdot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold2); flex: none; margin-right: 2px; }
 .say { margin: 0 0 .55em; display: flex; gap: 10px; align-items: flex-start; padding: .7em .9em; border-radius: 12px; border: 1px solid var(--line); background: var(--card); }
 .say .lb { flex: none; font-size: 11px; font-weight: 800; letter-spacing: .06em; padding: 3px 7px; border-radius: 6px; margin-top: .25em; }
 .say.x .lb { background: var(--badbg); color: var(--bad); }
@@ -543,6 +560,7 @@ input[type=range] { width: 100%; accent-color: var(--gold2); }
   .mhead { color: #000; background: none !important; padding: 0 0 12px; border-bottom: 2px solid #000; border-radius: 0; }
   .mhead::before, .mhead .mtile, .mhead .acts { display: none; }
   .printall .lsn { break-before: page; }
+  .prose .tbl { overflow: visible; break-inside: avoid; }
 }
 
 /* ---------- jalur belajar (4 tingkat) ---------- */

@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'debat', no: 19, t: 'Argumentasi & Debat', s: 'Berpikir jernih, membantah tanpa melukai', c: '#364fc7',
+  id: 'debat', no: 23, t: 'Argumentasi & Debat', s: 'Berpikir jernih, membantah tanpa melukai', c: '#364fc7',
   d: 'Fasih bukan berarti cepat bicara, tetapi jernih berpikir. Modul ini mengajarkan struktur argumen, cara menimbang bukti, sesat pikir yang sering muncul, cara membantah dengan sopan dan tajam, debat saat emosi tinggi, format debat formal, dan seni mengubah pikiran orang, termasuk pikiranmu sendiri.',
   L: [
     {

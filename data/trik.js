@@ -127,3 +127,39 @@ PRIME.T.push(
   ['puncak', 'Satu fokus per minggu', 'Jangan perbaiki semuanya sekaligus. Satu keterampilan per minggu, diukur, lalu ganti.'],
   ['puncak', 'Ajarkan satu teknik', 'Ajarkan satu teknik Prime kepada orang lain setiap bulan. Mengajar adalah cara tercepat menguasai.']
 );
+
+// ---------- 2026-11-16: modul wibawa, psikologi, rayu, treat, karisma, sop ----------
+PRIME.T.push(
+  ['wibawa', 'Janji lebih sedikit', 'Sebelum berkata "ya", tanyakan: sanggupkah aku? Kata yang jarang tapi selalu ditepati lebih berwibawa daripada janji yang banyak.'],
+  ['wibawa', 'Ganti maaf dengan terima kasih', '"Terima kasih sudah menunggu" lebih berwibawa daripada "Maaf ya lama". Simpan maaf untuk kesalahan yang nyata.'],
+  ['wibawa', 'Satu alasan cukup', 'Saat menolak atau memutuskan, beri satu alasan yang jelas. Lima alasan terdengar seperti minta dimaklumi.'],
+  ['wibawa', 'Pelan saat dipancing', 'Saat dibantah keras, bicara lebih pelan dan lebih rendah dari biasanya. Tempo yang tenang menandakan kendali.'],
+  ['wibawa', 'Jangan curhat ke bawahan', 'Akrab dengan tim boleh, tetapi masalah pribadimu dan keluhan pada atasanmu bukan beban yang harus dipikul bawahan.'],
+  ['psikologi', 'Efek Ben Franklin', 'Minta tolong yang kecil kepada orang yang ingin kamu dekati, misalnya rekomendasi atau pendapat. Orang cenderung menyukai orang yang pernah ia tolong.'],
+  ['psikologi', 'Akhiri dengan manis', 'Orang menilai pengalaman dari puncak dan akhirnya. Tutup rapat, kencan, atau layanan dengan momen yang menyenangkan.'],
+  ['psikologi', 'Sebut nama, bukan "tolong ya, semua"', 'Semakin banyak orang yang diminta, semakin sedikit yang merasa wajib. Sebut satu nama untuk setiap permintaan.'],
+  ['psikologi', 'Libatkan sebelum final', 'Orang lebih mendukung rencana yang ikut ia susun. Minta masukan sebelum rencananya jadi.'],
+  ['psikologi', 'Tambah cadangan waktu', 'Kita hampir selalu meremehkan lama sebuah pekerjaan. Tambahkan 30–50% dari perkiraan pertamamu.'],
+  ['psikologi', 'Tiga poin saja', 'Ingatan kerja manusia terbatas. Sampaikan maksimal tiga atau empat poin agar semuanya diingat.'],
+  ['rayu', 'Aman dulu, baru tertarik', 'Banyak wanita lebih dulu menilai apakah kamu aman dan sopan. Rasa nyaman membuka pintu bagi rasa tertarik.'],
+  ['rayu', 'Tebakan iseng', '"Tebakanku kamu anak sulung, kelihatan dari caramu ngatur pesanan." Tebakan ringan membuat obrolan personal dan seru, benar atau salah.'],
+  ['rayu', 'Rayu spesifik, bukan gombal', 'Gombal bisa dikirim ke siapa saja. Rayuan halus hanya cocok untuk dia: caranya bercerita, tertawa, atau memilih.'],
+  ['rayu', 'Tunjukkan niat lebih awal', 'Ajak berdua, bukan ramai-ramai. Niat yang jelas sejak awal mencegahmu terjebak friendzone.'],
+  ['rayu', 'Jangan negging', 'Merendahkan agar ia merasa perlu membuktikan diri adalah trik manipulatif. Banyak wanita langsung mengenalinya dan ilfeel.'],
+  ['treat', 'Kabari kalau sudah sampai', '"Kabari ya kalau sudah sampai rumah." Satu kalimat sederhana yang membuatnya merasa diperhatikan dan aman.'],
+  ['treat', 'Didengar atau dibantu?', 'Saat ia bercerita, tanyakan: "Kamu mau aku dengerin aja, atau mau cari solusinya bareng?"'],
+  ['treat', 'Jangan bilang "lagi PMS ya?"', 'Meremehkan emosinya dengan alasan hormon membuatnya merasa tidak dianggap. Tanyakan apa yang sebenarnya terjadi.'],
+  ['treat', 'Kecil tapi rutin', 'Perhatian kecil yang konsisten, seperti pesan di hari pentingnya atau makanan kesukaannya, lebih bermakna daripada hadiah besar setahun sekali.'],
+  ['treat', 'Sebut pemilik idenya', 'Di rapat, saat rekan wanita menyampaikan ide, sebut namanya sebagai pemilik ide: "Seperti usul Mbak Sari tadi…"'],
+  ['karisma', 'Masuk ruangan dengan jeda', 'Berhenti sejenak di pintu, lihat ruangan, tersenyum pada satu wajah, baru melangkah. Gerak yang tidak terburu-buru memancarkan ketenangan.'],
+  ['karisma', 'Pasang niat baik', 'Sebelum bertemu orang, katakan dalam hati: "Aku ingin dia pergi dengan perasaan lebih baik." Kehangatan itu terlihat di wajahmu.'],
+  ['karisma', 'Pakai kontras', '"Bukan sekadar menjual kopi, kita menjual pagi yang lebih baik." Kontras membuat pesan terdengar seperti keyakinan.'],
+  ['karisma', 'Jadilah tuan rumah', 'Di acara mana pun, bersikaplah seperti tuan rumah: kenalkan orang, ajak yang sendirian, beri sorotan kepada orang lain.'],
+  ['karisma', 'Anggukan pelan', 'Mengangguk cepat berkali-kali terlihat gugup dan ingin menyenangkan. Satu anggukan pelan terlihat yakin dan mendengarkan.'],
+  ['sop', 'Tulis "How much"', 'Standar hasil yang tidak disebut akan ditebak. Sebutkan jumlah, mutu, dan ukuran "selesai" di setiap tugas.'],
+  ['sop', 'Satu tugas, satu A', 'Dalam RACI, setiap tugas hanya punya satu orang yang accountable. Dua A sama dengan tidak ada A.'],
+  ['sop', 'GROW berakhir di Will', 'Sesi pembinaan tanpa aksi minggu ini hanyalah obrolan motivasi. Tutup dengan satu langkah nyata dan tanggal cek.'],
+  ['sop', 'Check di lapangan', 'Jangan hanya membaca laporan. Turun ke lapangan atau lihat data mentah minimal seminggu sekali.'],
+  ['sop', 'Minta PREP dari tim', '"Kasih saya intinya dulu, baru alasannya." Ajari tim melapor dengan format PREP agar rapat jauh lebih cepat.'],
+  ['sop', 'Sortir Senin pagi', 'Luangkan 15 menit setiap Senin untuk memasukkan semua tugas ke matriks: kerjakan, delegasikan, otomasi, atau hapus.']
+);

@@ -11,7 +11,10 @@
   const mi = (id, c = '') => '<svg class="ic ' + c + '" aria-hidden="true"><use href="#m-' + id + '"/></svg>';
   const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  const strip = s => String(s || '').replace(/\*\*?/g, '').replace(/^(##|>|!|x:|v:|=|-|\d+\.)\s*/gm, '');
+  const strip = s => String(s || '').replace(/\*\*?/g, '').replace(/^(##|>|!|x:|v:|=|-|\d+\.)\s*/gm, '').replace(/\s*\|\s*/g, ' ');
+  // modul baru: label "Baru" di menu dan kartu selama 45 hari sejak tanggal m.baru
+  const isNew = m => !!(m && m.baru && Date.now() - Date.parse(m.baru) < 45 * 864e5);
+  const nw = m => isNew(m) ? '<b class="nw">Baru</b>' : '';
 
   // ---------- data ----------
   // jalur belajar (data/jalur.js): urutan modul mengikuti tingkat Dasar → Menengah → Mahir → Fasih
@@ -139,22 +142,32 @@
       (kind === 'v' && act ? '<button class="ib" data-say="' + esc(text) + '" aria-label="Dengarkan">' + ic('vol') + '</button>' : '') + '</div>';
   }
   function md(src) {
-    const out = []; let para = [], list = null, def = null;
+    const out = []; let para = [], list = null, def = null, tbl = null;
     const fp = () => { if (para.length) { out.push('<p>' + inl(para.join(' ')) + '</p>'); para = []; } };
     const fl = () => { if (list) { out.push('<' + list.t + (list.s > 1 ? ' start="' + list.s + '"' : '') + '>' + list.i.map(x => '<li>' + inl(x) + '</li>').join('') + '</' + list.t + '>'); list = null; } };
     const fd = () => { if (def) { out.push('<div class="def">' + def.map(([a, b]) => '<div class="dt">' + inl(a) + '</div><div>' + inl(b) + '</div>').join('') + '</div>'); def = null; } };
-    const all = () => { fp(); fl(); fd(); };
+    // tabel: baris "| a | b |", baris pertama = judul kolom; kolom yang isinya pendek semua (R, A, C, I, A/R, –) dibuat rata tengah
+    const ft = () => {
+      if (!tbl) return;
+      const [h, ...rows] = tbl, short = c => String(c || '').replace(/\*/g, '').length <= 3;
+      const cc = h.map((_, i) => i > 0 && rows.length > 0 && rows.every(r => short(r[i])));
+      const cell = (tag, c, i) => '<' + tag + (cc[i] ? ' class="c"' : '') + '>' + inl(c) + '</' + tag + '>';
+      out.push('<div class="tbl"><table><thead><tr>' + h.map((c, i) => cell('th', c, i)).join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map((c, i) => cell('td', c, i)).join('') + '</tr>').join('') + '</tbody></table></div>');
+      tbl = null;
+    };
+    const all = () => { fp(); fl(); fd(); ft(); };
     for (const raw of String(src).split('\n')) {
       const t = raw.trim(); let m;
       if (!t) { all(); continue; }
       if (t.startsWith('## ')) { all(); out.push('<h2>' + inl(t.slice(3)) + '</h2>'); }
-      else if ((m = /^- (.*)/.exec(t))) { fp(); fd(); if (!list || list.t !== 'ul') { fl(); list = { t: 'ul', i: [] }; } list.i.push(m[1]); }
-      else if ((m = /^(\d+)\. (.*)/.exec(t))) { fp(); fd(); if (!list || list.t !== 'ol') { fl(); list = { t: 'ol', i: [], s: +m[1] }; } list.i.push(m[2]); }
+      else if (t.startsWith('|')) { fp(); fl(); fd(); const cs = t.replace(/^\||\|$/g, '').split('|').map(c => c.trim()); if (!cs.every(c => /^:?-{2,}:?$/.test(c))) (tbl = tbl || []).push(cs); }
+      else if ((m = /^- (.*)/.exec(t))) { fp(); fd(); ft(); if (!list || list.t !== 'ul') { fl(); list = { t: 'ul', i: [] }; } list.i.push(m[1]); }
+      else if ((m = /^(\d+)\. (.*)/.exec(t))) { fp(); fd(); ft(); if (!list || list.t !== 'ol') { fl(); list = { t: 'ol', i: [], s: +m[1] }; } list.i.push(m[2]); }
       else if (t.startsWith('> ')) { all(); out.push('<div class="call tip">' + ic('spark') + '<div>' + inl(t.slice(2)) + '</div></div>'); }
       else if (t.startsWith('! ')) { all(); out.push('<div class="call warn">' + ic('alert') + '<div>' + inl(t.slice(2)) + '</div></div>'); }
       else if ((m = /^([xv]): (.*)/.exec(t))) { all(); out.push(sayHTML(m[1], m[2], CAN_TTS)); }
-      else if ((m = /^= ([^:]+): (.*)/.exec(t))) { fp(); fl(); (def = def || []).push([m[1], m[2]]); }
-      else { fl(); fd(); para.push(t); }
+      else if ((m = /^= ([^:]+): (.*)/.exec(t))) { fp(); fl(); ft(); (def = def || []).push([m[1], m[2]]); }
+      else { fl(); fd(); ft(); para.push(t); }
     }
     all();
     return out.join('');
@@ -209,7 +222,7 @@
   // ---------- pieces ----------
   function mcard(m) {
     const n = modDone(m), all = m.L.length;
-    return '<a class="mcard' + (n === all ? ' done' : '') + '" href="#/m/' + m.id + '"><div class="top"><span class="mtile" style="' + grad(m.c) + '">' + mi(m.id) + '</span><div><div class="no">MODUL ' + m.no + '</div><div class="t">' + esc(m.t) + '</div></div></div>' +
+    return '<a class="mcard' + (n === all ? ' done' : '') + '" href="#/m/' + m.id + '"><div class="top"><span class="mtile" style="' + grad(m.c) + '">' + mi(m.id) + '</span><div><div class="no">MODUL ' + m.no + nw(m) + '</div><div class="t">' + esc(m.t) + '</div></div></div>' +
       '<p>' + esc(m.s) + '</p><div class="ft"><div class="bar"><i style="width:' + (n / all * 100) + '%;background:' + m.c + '"></i></div><span>' + n + '/' + all + '</span></div></a>';
   }
   // tingkat: kartu jalur (beranda), bagian per tingkat (Belajar), nomor bulat berwarna
@@ -668,9 +681,9 @@
   // ---------- chrome (sidebar, tabs, level) ----------
   function buildNav() {
     const main = [['', 'home', 'Beranda'], ['belajar', 'book', 'Belajar'], ['skrip', 'chat', 'Contoh Kalimat'], ['latihan', 'target', 'Latihan'], ['trik', 'spark', 'Tips & Trik'], ['progres', 'trophy', 'Progres']];
-    const mlink = m => '<a class="mod" href="#/m/' + m.id + '" data-k="m:' + m.id + '"><span class="dot" style="' + grad(m.c) + '">' + mi(m.id) + '</span><span class="t">' + esc(m.t) + '</span><em data-mc="' + m.id + '"></em></a>';
+    const mlink = m => '<a class="mod" href="#/m/' + m.id + '" data-k="m:' + m.id + '" title="' + esc(m.t) + (isNew(m) ? ' (baru)' : '') + '"><span class="dot" style="' + grad(m.c) + '">' + mi(m.id) + '</span><span class="t">' + esc(m.t) + '</span>' + (isNew(m) ? '<i class="nwdot" title="Modul baru"></i>' : '') + '<em data-mc="' + m.id + '"></em></a>';
     $('#snav').innerHTML = main.map(([k, i, t]) => '<a href="#/' + k + '" data-k="' + k + '">' + ic(i) + t + '</a>').join('') +
-      (J.length ? '<div class="sh">Jalur belajar</div>' + J.map(j => '<button class="jh" data-jt="' + j.id + '" aria-expanded="false">' + jn(j, 'sm') + '<span class="t">' + esc(j.t) + '</span><em data-jc="' + j.id + '"></em>' + ic('down', 'sm chev') + '</button><div class="jg" data-jg="' + j.id + '" hidden>' + j.M.map(mlink).join('') + '</div>').join('')
+      (J.length ? '<div class="sh">Jalur belajar</div>' + J.map(j => '<button class="jh" data-jt="' + j.id + '" aria-expanded="false">' + jn(j, 'sm') + '<span class="t">' + esc(j.t) + '</span>' + (j.M.some(isNew) ? '<i class="nwdot" title="Ada modul baru"></i>' : '') + '<em data-jc="' + j.id + '"></em>' + ic('down', 'sm chev') + '</button><div class="jg" data-jg="' + j.id + '" hidden>' + j.M.map(mlink).join('') + '</div>').join('')
         : '<div class="sh">Modul</div>' + MODS.map(mlink).join(''));
     $('#tabs').innerHTML = [['', 'home', 'Beranda'], ['belajar', 'book', 'Belajar'], ['skrip', 'chat', 'Kalimat'], ['latihan', 'target', 'Latihan'], ['trik', 'spark', 'Trik']].map(([k, i, t]) => '<a href="#/' + k + '" data-k="' + k + '">' + ic(i) + '<span>' + t + '</span></a>').join('');
   }

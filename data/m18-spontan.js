@@ -1,5 +1,5 @@
 PRIME.M.push({
-  id: 'spontan', no: 18, t: 'Bicara Spontan', s: 'Berpikir cepat, menjawab rapi tanpa persiapan', c: '#d9480f',
+  id: 'spontan', no: 22, t: 'Bicara Spontan', s: 'Berpikir cepat, menjawab rapi tanpa persiapan', c: '#d9480f',
   d: 'Orang yang fasih bukan yang hafal naskah, tetapi yang tetap rapi saat ditanya mendadak, disuruh memberi sambutan dadakan, atau diserang pertanyaan menjebak. Modul ini memberi kerangka berpikir cepat, cara mengulur waktu dengan elegan, prinsip improvisasi, dan latihan harian agar spontanitasmu terlatih.',
   L: [
     {
