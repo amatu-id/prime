@@ -52,7 +52,8 @@ for (const s of P.S) {
 }
 for (const t of P.T) if (!mods.has(t[0]) || t.length !== 3) err.push('trik salah: ' + t[1]);
 for (const c of P.C) if (c.length !== 3 || !mods.has(c[2])) err.push('tantangan salah: ' + c[0]);
-if (P.C.length !== 30) warn.push('tantangan bukan 30: ' + P.C.length);
+if (P.C.length % 30) warn.push('tantangan bukan kelipatan 30 (satu seri = 30 misi): ' + P.C.length);
+if (P.CS && P.CS.length !== Math.ceil(P.C.length / 30)) warn.push('PRIME.CS harus ' + Math.ceil(P.C.length / 30) + ' seri, ada ' + P.CS.length);
 for (const w of warn) console.log('peringatan:', w);
 if (err.length) { for (const e of err) console.error('GALAT:', e); process.exit(1); }
 console.log('data ok: ' + J.length + ' tingkat, ' + P.M.length + ' modul, ' + nl + ' pelajaran, ' + nq + ' soal, ' + P.S.length + ' skrip, ' + P.T.length + ' trik, ' + P.C.length + ' tantangan, ±' + words + ' kata materi');

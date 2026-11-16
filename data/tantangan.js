@@ -28,5 +28,42 @@ PRIME.C.push(
   ['Hook tiga detik', 'Tulis tiga hook untuk konten tentang keahlianmu: rasa sakit, pembalik, dan hasil.', 'marketing'],
   ['Follow-up bernilai', 'Kirim satu tindak lanjut yang membawa informasi berguna, bukan sekadar "gimana, jadi?".', 'deal'],
   ['Permintaan maaf utuh', 'Sampaikan satu permintaan maaf yang tertunda: akui, dampak, tanggung jawab, perbaikan.', 'tegas'],
-  ['Evaluasi 30 hari', 'Rekam ulang dirimu 30 detik seperti hari pertama. Bandingkan, dan tulis tiga perubahan terbesarmu.', 'bicara']
+  ['Evaluasi 30 hari', 'Rekam ulang dirimu 30 detik seperti hari pertama. Bandingkan, dan tulis tiga perubahan terbesarmu.', 'bicara'],
+  // ---------- Seri 2: Menuju Fasih (modul-modul jalur Dasar–Fasih) ----------
+  ['Rekam titik awal', 'Rekam dirimu bicara spontan 60 detik tentang pekerjaan atau kegiatanmu. Simpan rekamannya untuk dibandingkan di hari ke-30.', 'spontan'],
+  ['Cek pemahaman', 'Setelah memberi informasi penting, minta orangnya menceritakan ulang langkah pertamanya dengan kata-katanya sendiri.', 'komunikasi'],
+  ['Buru kata kabur', 'Ganti setiap "nanti", "secepatnya", dan "sedikit" di pesanmu hari ini dengan jam, tanggal, atau angka.', 'komunikasi'],
+  ['Bank bukti', 'Buat catatan "Bukti" dan isi lima entri: pujian, keberhasilan, atau hal sulit yang pernah kamu lewati.', 'pede'],
+  ['Terima pujian', 'Setiap kali dipuji hari ini, jawab "Terima kasih" tanpa merendah atau menolak pujiannya.', 'pede'],
+  ['Pesan sopan dan jelas', 'Kirim satu pesan kepada orang yang lebih senior: salam, perkenalan singkat, inti yang jelas, dan terima kasih dalam satu pesan.', 'kata'],
+  ['Perkenalan 10 detik', 'Tulis dan latih perkenalan 10 detik (nama, konteks, kail), lalu pakai sekali hari ini.', 'ngobrol'],
+  ['Tiga pertanyaan lanjutan', 'Dalam satu obrolan, ajukan tiga pertanyaan lanjutan dari satu jawaban sebelum pindah topik.', 'ngobrol'],
+  ['Satu anak tangga', 'Lakukan satu hal kecil yang biasanya kamu hindari karena takut dinilai, misalnya bertanya di forum atau menyapa orang baru.', 'pede'],
+  ['"Dan", bukan "tapi"', 'Sepanjang hari, ganti "tapi" setelah pujian atau persetujuan dengan "dan". Catat berapa kali berhasil.', 'kata'],
+  ['Kirim rangkuman', 'Setelah satu obrolan atau rapat penting, kirim rangkuman tiga baris: siapa, melakukan apa, kapan.', 'komunikasi'],
+  ['Sapa kenalan lama', 'Kirim pesan singkat tanpa meminta apa pun kepada satu teman atau kenalan yang lama tidak kamu hubungi.', 'ngobrol'],
+  ['Inti di baris pertama', 'Tulis semua pesan kerja hari ini dengan permintaan atau kesimpulan di kalimat pertama.', 'tulisan'],
+  ['Ucapkan kebutuhan', 'Sampaikan satu kebutuhanmu dengan jelas kepada orang terdekat, bukan disindirkan atau dipendam.', 'dekat'],
+  ['Aturan tiga kali', 'Kalau sebuah urusan sudah bolak-balik tiga kali di chat, pindahkan ke telepon atau tatap muka.', 'tulisan'],
+  ['Dengar tanpa solusi', 'Saat ada yang curhat, tahan saranmu lima menit. Pantulkan perasaannya dan tanya "terus gimana?".', 'dekat'],
+  ['Pesan yang tertunda', 'Tulis satu pesan sulit yang lama kamu tunda (menagih, menolak, atau minta maaf), simpan semalam, baca ulang, lalu kirim.', 'tulisan'],
+  ['Jawaban kilat', 'Minta seseorang memberimu tiga pertanyaan acak. Jawab masing-masing dengan kerangka PREP atau Dulu–Kini–Nanti.', 'spontan'],
+  ['Uji satu klaim', 'Pilih satu klaim dari berita atau grup chat. Uji sumber, bukti, pembanding, penjelasan lain, dan bukti sebaliknya.', 'debat'],
+  ['Sambutan dadakan', 'Latih sambutan satu menit untuk acara khayalan: terima kasih, hubungan, satu cerita, harapan, penutup.', 'spontan'],
+  ['Versi terkuat lawan', 'Tulis pendapat yang tidak kamu setujui dalam versi terkuatnya, sampai pendukungnya akan berkata "tepat sekali".', 'debat'],
+  ['Siapkan percakapan berat', 'Untuk satu percakapan sulit yang kamu hindari, tulis tujuan, waktu, tempat, dan dua kalimat pembukanya.', 'sulit'],
+  ['Kalimat kontras', 'Saat obrolan mulai tegang, pakai satu kalimat "Aku tidak bermaksud…, yang aku maksud…".', 'sulit'],
+  ['Rancang pidato', 'Tulis kalimat sebelum–sesudah dan satu kalimat inti untuk pidato lima menit tentang hal yang kamu kuasai.', 'panggung'],
+  ['Masukan ke atas', 'Sampaikan satu masukan kepada orang yang lebih senior: minta izin, sebut kejadian dan dampaknya, lalu beri usulan.', 'sulit'],
+  ['Perkenalan pembicara', 'Tulis perkenalan 30 detik untuk orang yang kamu kagumi, seolah kamu MC yang akan memanggilnya ke panggung.', 'panggung'],
+  ['Arahan lima unsur', 'Berikan satu arahan lengkap: apa, kenapa, kapan, batas, dan ukuran selesai.', 'pimpin'],
+  ['Apa lagi?', 'Saat membantu orang memecahkan masalah, tanyakan "Apa lagi?" dua kali sebelum memberi saranmu.', 'pimpin'],
+  ['Satu pesan, empat versi', 'Sampaikan satu kabar penting dalam empat versi: untuk atasan, rekan, orang tua, dan anak delapan tahun.', 'puncak'],
+  ['Evaluasi dan rencana 90 hari', 'Rekam ulang 60 detik seperti hari pertama seri ini, bandingkan, lalu tulis rencana 90 hari: tiga keterampilan, ukuran, dan jadwal latihan.', 'puncak']
 );
+
+// Seri tantangan: setiap 30 misi = satu seri. Kunci progres tetap nomor misi global (1–60), jadi progres Seri 1 lama tidak berubah.
+PRIME.CS = [
+  { t: 'Seri 1', s: 'Kebiasaan dasar', d: 'Kebiasaan bicara dan kendali diri sehari-hari: jeda, menolak, mendengar, menahan diri, dan negosiasi kecil.' },
+  { t: 'Seri 2', s: 'Menuju fasih', d: 'Misi dari modul-modul baru: memastikan pesan dipahami, percaya diri, pilihan kata, mengobrol, pesan tertulis, orang terdekat, sampai bicara spontan, berargumen, percakapan sulit, panggung, dan memimpin.' }
+];

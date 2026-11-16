@@ -329,25 +329,37 @@
     }
   };
 
-  // ---------- Tantangan 30 Hari ----------
+  // ---------- Tantangan 30 Hari: beberapa seri @30 misi (PRIME.CS). Kunci progres chal.d = nomor misi global 1..N,
+  // jadi menambah seri baru tidak mengubah progres seri lama. chal.s = mulai Seri 1 (lama), chal.ss[seri] = mulai tiap seri.
   T.tantangan = {
     t: 'Tantangan 30 Hari',
     render(root, A) {
-      const C = A.P.C;
+      const C = A.P.C, N = 30, CS = A.P.CS || [], ns = Math.ceil(C.length / N);
+      const meta = s => CS[s] || { t: 'Seri ' + (s + 1), s: '', d: '' };
+      const doneIn = (d, s) => C.slice(s * N, s * N + N).filter((c, i) => d[s * N + i + 1]).length;
+      const todayKey = d => { let k = 1; while (k <= C.length && d[k] && d[k] !== A.day()) k++; return Math.min(k, C.length); };
+      let ser = null;
       function draw() {
-        const ch = A.S.get('chal', {}), d = ch.d || {}, n = Object.keys(d).length;
-        let today = 1; while (today <= C.length && d[today] && d[today] !== A.day()) today++;
-        root.innerHTML = '<h1 class="h1">Tantangan 30 hari</h1><p class="sub">Satu misi kecil per hari. Kebiasaan bicara dan kendali diri tumbuh dari latihan kecil yang diulang. Centang misi saat selesai; urutannya boleh fleksibel.</p>' +
-          '<div class="card pad" style="margin-top:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>' + n + ' dari ' + C.length + ' misi selesai</b><div class="bar" style="margin-top:8px;height:8px"><i style="width:' + (n / C.length * 100) + '%"></i></div></div>' + (ch.s ? '<span class="tag">Mulai ' + A.dstr(ch.s) + '</span>' : '') + '</div>' +
-          '<div class="days" style="margin-top:16px">' + C.map((c, i) => { const k = i + 1, m = A.MBY[c[2]]; return '<button class="day' + (d[k] ? ' done' : '') + (k === today && !d[k] ? ' today' : '') + '" data-d="' + k + '"><span class="n">' + (d[k] ? A.ic('check', 'sm') : k) + '</span><span class="tx"><b>' + A.esc(c[0]) + '</b><small>' + A.esc(c[1]) + '</small>' + (m ? '<small style="color:' + m.c + ';font-weight:650;margin-top:4px">' + A.esc(m.t) + '</small>' : '') + '</span></button>'; }).join('') + '</div>';
+        const ch = A.S.get('chal', {}), d = ch.d || {}, tk = todayKey(d);
+        if (ser == null || ser >= ns) ser = Math.floor((tk - 1) / N);
+        const from = ser * N, list = C.slice(from, from + N), n = doneIn(d, ser), all = Object.keys(d).length, M = meta(ser);
+        const st = (ch.ss || {})[ser + 1] || (ser === 0 ? ch.s : null);
+        root.innerHTML = '<h1 class="h1">Tantangan 30 hari</h1><p class="sub">Satu misi kecil per hari. Kebiasaan bicara dan kendali diri tumbuh dari latihan kecil yang diulang. Centang misi saat selesai; urutannya boleh fleksibel.' + (ns > 1 ? ' Ada ' + ns + ' seri; selesai satu seri, lanjut ke seri berikutnya.' : '') + '</p>' +
+          (ns > 1 ? '<div class="chips" style="margin-top:16px">' + Array.from({ length: ns }, (_, s) => '<button class="chip' + (s === ser ? ' on' : '') + '" data-ser="' + s + '">' + A.esc(meta(s).t) + (meta(s).s ? ' · ' + A.esc(meta(s).s) : '') + ' <span' + (s === ser ? '' : ' class="mut"') + '>' + doneIn(d, s) + '/' + Math.min(N, C.length - s * N) + '</span></button>').join('') + '</div>' : '') +
+          (ns > 1 && M.d ? '<p class="mut" style="margin:12px 0 0;font-size:14px;max-width:70ch">' + A.esc(M.d) + '</p>' : '') +
+          '<div class="card pad" style="margin-top:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>' + n + ' dari ' + list.length + ' misi' + (ns > 1 ? ' ' + A.esc(M.t) : '') + ' selesai</b><div class="bar" style="margin-top:8px;height:8px"><i style="width:' + (n / list.length * 100) + '%"></i></div>' + (ns > 1 ? '<small class="mut" style="display:block;margin-top:6px">Total ' + all + ' dari ' + C.length + ' misi di semua seri</small>' : '') + '</div>' + (st ? '<span class="tag">Mulai ' + A.dstr(st) + '</span>' : '') + '</div>' +
+          '<div class="days" style="margin-top:16px">' + list.map((c, i) => { const k = from + i + 1, m = A.MBY[c[2]]; return '<button class="day' + (d[k] ? ' done' : '') + (k === tk && !d[k] ? ' today' : '') + '" data-d="' + k + '"><span class="n">' + (d[k] ? A.ic('check', 'sm') : i + 1) + '</span><span class="tx"><b>' + A.esc(c[0]) + '</b><small>' + A.esc(c[1]) + '</small>' + (m ? '<small style="color:' + m.c + ';font-weight:650;margin-top:4px">' + A.esc(m.t) + '</small>' : '') + '</span></button>'; }).join('') + '</div>';
       }
       draw();
       root.addEventListener('click', e => {
+        const sb = e.target.closest('[data-ser]'); if (sb) { ser = +sb.dataset.ser; draw(); return; }
         const b = e.target.closest('[data-d]'); if (!b) return;
-        const k = b.dataset.d, ch = A.S.get('chal', {}); ch.d = ch.d || {};
+        const k = +b.dataset.d, s = Math.floor((k - 1) / N), ch = A.S.get('chal', {}); ch.d = ch.d || {};
         if (ch.d[k]) { delete ch.d[k]; A.S.set('chal', ch); draw(); return; }
-        ch.d[k] = A.day(); if (!ch.s) ch.s = A.day(); A.S.set('chal', ch); A.gain(10, 'Misi hari ke-' + k); draw();
-        if (Object.keys(ch.d).length === A.P.C.length) A.toast('Semua misi selesai. Luar biasa!', 'xp');
+        ch.d[k] = A.day(); if (!ch.s && s === 0) ch.s = A.day(); ch.ss = ch.ss || {}; if (!ch.ss[s + 1]) ch.ss[s + 1] = A.day();
+        A.S.set('chal', ch); A.gain(10, 'Misi ' + (ns > 1 ? meta(s).t + ' ' : '') + 'hari ke-' + ((k - 1) % N + 1)); draw();
+        if (Object.keys(ch.d).length === C.length) A.toast('Semua misi di semua seri selesai. Luar biasa!', 'xp');
+        else if (ns > 1 && doneIn(ch.d, s) === Math.min(N, C.length - s * N)) A.toast(meta(s).t + ' tuntas! ' + (s + 1 < ns ? 'Lanjut ke ' + meta(s + 1).t + '.' : ''), 'xp');
       });
       return null;
     }

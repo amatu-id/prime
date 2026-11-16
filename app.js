@@ -122,7 +122,8 @@
       ['Pengamat Diri', '7 catatan Jurnal Emosi', j >= 7, 'pen'],
       ['Suara Berbobot', '5 sesi Pelatih Bicara', (a.sp || 0) >= 5, 'mic'],
       ['Juara Kuis', '10 kuis pelajaran sempurna', qs.perfect >= 10, 'trophy'],
-      ['Tantangan 30', 'Semua misi Tantangan 30 Hari', ch >= 30, 'target'],
+      ['Tantangan 30', '30 misi Tantangan selesai', ch >= 30, 'target'],
+      ...(P.C.length > 30 ? [['Tantangan Tuntas', 'Semua ' + P.C.length + ' misi di semua seri', ch >= P.C.length, 'target']] : []),
       ['Lulus Prime', 'Ujian akhir ≥ 80%', !!(qs.final && qs.final.b / qs.final.n >= .8), 'award']
     ].map(([t, s, on, i]) => ({ t, s, on, i }));
     for (const j of J) { const p = jPct(j); list.push({ t: 'Lulus ' + j.t, s: 'Ujian Tingkat ' + j.t + ' ≥ 80%', on: p != null && p >= 80, j }); }
@@ -260,7 +261,7 @@
         '<section class="sec"><div class="sech"><h2 class="h2">Hari ini</h2><a href="#/latihan">Semua latihan</a></div><div class="daily">' +
         '<div class="card dcard"><div class="k">' + ic('spark', 'sm') + 'Trik hari ini</div><b>' + esc(tr[1]) + '</b><p>' + esc(tr[2]) + '</p><div class="ft"><a class="btn ghost sm" href="#/trik">Trik lainnya</a></div></div>' +
         '<div class="card dcard"><div class="k">' + ic('chat', 'sm') + 'Kalimat hari ini</div><b>' + esc(sk.t) + '</b><p>“' + esc(sk.v[0][1]) + '”</p><div class="ft"><a class="btn ghost sm" href="#/skrip/' + sk.id + '">Lihat situasinya</a>' + (CAN_TTS ? '<button class="btn ghost sm" data-say="' + esc(sk.v[0][1]) + '">' + ic('vol', 'sm') + 'Dengar</button>' : '') + '</div></div>' +
-        (ch ? '<div class="card dcard"><div class="k">' + ic('target', 'sm') + 'Tantangan hari ke-' + ch.n + '</div><b>' + esc(ch.c[0]) + '</b><p>' + esc(ch.c[1]) + '</p><div class="ft"><a class="btn ghost sm" href="#/latihan/tantangan">' + (ch.done ? ic('check', 'sm') + 'Selesai' : 'Buka tantangan') + '</a></div></div>' : '') +
+        (ch ? '<div class="card dcard"><div class="k">' + ic('target', 'sm') + 'Tantangan ' + (P.C.length > 30 ? 'seri ' + Math.ceil(ch.n / 30) + ' · ' : '') + 'hari ke-' + ((ch.n - 1) % 30 + 1) + '</div><b>' + esc(ch.c[0]) + '</b><p>' + esc(ch.c[1]) + '</p><div class="ft"><a class="btn ghost sm" href="#/latihan/tantangan">' + (ch.done ? ic('check', 'sm') + 'Selesai' : 'Buka tantangan') + '</a></div></div>' : '') +
         '</div></section>' +
         (J.length ? '<section class="sec"><div class="sech"><h2 class="h2">Jalur belajar</h2><a href="#/kuis/penempatan">Tes penempatan</a></div><div class="path">' + J.map(j => jcard(j, j === nx.m.j)).join('') + '</div></section>' +
           '<section class="sec"><div class="sech"><h2 class="h2">Modul tingkat ' + esc((nx.m.j || J[0]).t) + '</h2><a href="#/belajar">Semua modul</a></div><div class="mods">' + (nx.m.j || J[0]).M.map(mcard).join('') + '</div></section>'
@@ -470,7 +471,7 @@
     jurnal: ['pen', 'Jurnal Emosi', 'Catat pemicu, emosi, dan respons. Lihat polamu dari waktu ke waktu.', '#/latihan/jurnal', 'Kendali diri'],
     bicara: ['mic', 'Pelatih Bicara', 'Bicara 60 detik tentang topik acak, hitung kata pengisi dan tempo.', '#/latihan/bicara', 'Tata bicara'],
     nego: ['m-negosiasi', 'Lembar Negosiasi', 'Siapkan BATNA, batas, target, dan pembuka sebelum bernegosiasi.', '#/latihan/nego', 'Negosiasi'],
-    tantangan: ['cal', 'Tantangan 30 Hari', 'Satu misi kecil per hari untuk membangun kebiasaan baru.', '#/latihan/tantangan', 'Kebiasaan']
+    tantangan: ['cal', 'Tantangan 30 Hari', 'Satu misi kecil per hari. Seri 1 kebiasaan dasar, Seri 2 menuju fasih.', '#/latihan/tantangan', 'Kebiasaan']
   };
   function toolCards(ids) {
     return ids.map(id => { const t = TOOLDEF[id]; const icon = t[0].startsWith('m-') ? mi(t[0].slice(2)) : ic(t[0]); return '<a class="tool" href="' + t[3] + '"><span class="ti">' + icon + '</span><b>' + t[1] + '</b><p>' + t[2] + '</p><span class="tag">' + t[4] + '</span></a>'; }).join('');
